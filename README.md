@@ -8,5 +8,5 @@
 <br/><br/>
 
 ## 🏆 GitHub Trophies
-[![trophy](https://github-profile-trophy.vercel.app/?username=nunoras&theme=onedark&column=4)](https://github.com/ryo-ma/github-profile-trophy)
+[![trophy](https://github-profile-trophy.vercel.app/?username=nunoras&theme=nord&row=1&column=3&no-bg=true&no-frame=true)](https://github.com/ryo-ma/github-profile-trophy)
 
