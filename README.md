@@ -2,7 +2,7 @@
 # Hi there 👋🏻
 <img align="right" height="270px" alt="GIF" src="https://github.githubassets.com/images/mona-loading-dark.gif" />
 
-### I am a developer from Lisbon, Portugal 🇵🇹
+### I am a developer from Sintra, Portugal 🇵🇹
 - 🌱 I’m currently learning React & Next.js.
 - 💬 Ask me about anything, I am happy to help :smile:
 <br/><br/>
