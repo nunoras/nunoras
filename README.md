@@ -4,7 +4,7 @@
 
 ### I am a developer from 🌍 Sintra, Portugal
 - 🌱 I’m currently learning React & Next.js.
-- 💬 Ask me about anything, I am happy to help :smile:
+- 💬 Ask me about anything, I am happy to help
 <br/><br/>
 
 ## 🏆 GitHub Trophies
