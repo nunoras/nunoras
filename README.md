@@ -1,16 +1,13 @@
-### Hi there 👋
 
-<!--
-**nunoras/nunoras** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
+# Hi there 👋🏻
 
-Here are some ideas to get you started:
+### I am a developer from Lisbon, Portugal 🇵🇹
+- 🌱 I’m currently learning React & Next.js.
+- 💬 Ask me about anything, I am happy to help :smile:
+<br/><br/>
+## 🏆 GitHub Trophies
 
-- 🔭 I’m currently working on ...
-- 🌱 I’m currently learning ...
-- 👯 I’m looking to collaborate on ...
-- 🤔 I’m looking for help with ...
-- 💬 Ask me about ...
-- 📫 How to reach me: ...
-- 😄 Pronouns: ...
-- ⚡ Fun fact: ...
--->
+
+[![trophy](https://github-profile-trophy.vercel.app/?username=nunoras&theme=onedark&column=4)](https://github.com/ryo-ma/github-profile-trophy)
+
+![footer](https://capsule-render.vercel.app/api?type=waving&color=0:006677,100:053D00&height=155&section=footer&text=&fontSize=90)
