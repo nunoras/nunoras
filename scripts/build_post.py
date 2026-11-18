@@ -94,11 +94,6 @@ def sans_face(path, weight, family, text):
     return subset_face(family, font, text)
 
 
-def all_text():
-    parts = [NAME, STAMP, FILE_NAME, FILE_INFO, QUESTION, REPLY_NAME, REPLY_NO, REPLY_QUOTE, REPLY_TEXT, "File:_", *GREENTEXT]
-    return "".join(parts)
-
-
 def text(x, y, body, size, fill, family, weight="normal", extra=""):
     return f'<text x="{x:.1f}" y="{y:.1f}" font-family="{family}" font-size="{size}" font-weight="{weight}" fill="{fill}"{extra}>{escape(body)}</text>'
 
@@ -117,11 +112,9 @@ def tag(x, y, body, mono, anchor_right=False):
     )
 
 
-def render(theme, sans, bold, mono, picture):
+def render(theme, sans, bold, mono, picture, style):
     c = THEMES[theme]
     out = []
-    out.append(f'<rect x="0.5" y="0.5" width="{WIDTH - 1}" height="HEIGHT" fill="{c["page"]}" stroke="{c["line"]}"/>')
-
     out.append(text(10, 17, BOARD, 11, c["muted"], mono.family))
     out.append(text(WIDTH - 10, 17, NAV, 11, c["muted"], mono.family, extra=' text-anchor="end"'))
     out.append(f'<rect x="1" y="24" width="{WIDTH - 2}" height="1" fill="{c["line"]}"/>')
@@ -170,11 +163,8 @@ def render(theme, sans, bold, mono, picture):
     out.append(text(50, ly, REPLY_TEXT, 12.5, c["text"], sans.family))
 
     height = ry + box_h + 12
-    body = "\n".join(out).replace('height="HEIGHT"', f'height="{height - 1}"')
-    style = (
-        sans.css() + bold.css() + mono.css()
-        + "text{white-space:pre}.cursor{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}"
-    )
+    frame = f'<rect x="0.5" y="0.5" width="{WIDTH - 1}" height="{height - 1}" fill="{c["page"]}" stroke="{c["line"]}"/>'
+    body = "\n".join([frame, *out])
     return (
         f'<svg xmlns="http://www.w3.org/2000/svg" width="{WIDTH}" height="{height}" viewBox="0 0 {WIDTH} {height}" '
         f'role="img" aria-label="An imageboard post by Nuno">\n<style>{style}</style>\n{body}\n</svg>\n'
@@ -187,14 +177,19 @@ def main():
     parser.add_argument("--mono", required=True, type=Path)
     args = parser.parse_args()
 
-    letters = all_text()
+    letters = "".join([NAME, STAMP, FILE_NAME, FILE_INFO, QUESTION, REPLY_NAME, REPLY_NO, REPLY_QUOTE, REPLY_TEXT, "File:_", *GREENTEXT])
     sans = sans_face(args.sans, 400, "post", letters)
     bold = sans_face(args.sans, 700, "postbold", letters)
     mono = subset_face("board", TTFont(args.mono), BOARD + NAV + TAG_LEFT + TAG_RIGHT)
     picture = base64.b64encode((ROOT / "assets" / "fellowstitch.png").read_bytes()).decode()
 
+    style = (
+        sans.css() + bold.css() + mono.css()
+        + "text{white-space:pre}.cursor{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}"
+    )
+
     for theme in THEMES:
-        (ROOT / "assets" / f"post-{theme}.svg").write_text(render(theme, sans, bold, mono, picture), encoding="utf-8")
+        (ROOT / "assets" / f"post-{theme}.svg").write_text(render(theme, sans, bold, mono, picture, style), encoding="utf-8")
 
 
 if __name__ == "__main__":
