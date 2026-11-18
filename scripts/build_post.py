@@ -146,8 +146,6 @@ def render(theme, sans, bold, mono, picture, style):
         gy += 21.6
     gy += 21.6
     out.append(text(gx, gy, QUESTION, 13.5, c["strong"], sans.family))
-    cursor_x = gx + sans.width(QUESTION, 13.5) + 3
-    out.append(f'<rect class="cursor" x="{cursor_x:.1f}" y="{gy + 1}" width="7" height="2" fill="{c["strong"]}"/>')
 
     ry = top + THUMB + 10
     box_w = max(bold.width(REPLY_NAME, 12.5) + sans.width(REPLY_NO, 12.5), sans.width(REPLY_TEXT, 12.5)) + 20
@@ -183,10 +181,7 @@ def main():
     mono = subset_face("board", TTFont(args.mono), BOARD + NAV + TAG_LEFT + TAG_RIGHT)
     picture = base64.b64encode((ROOT / "assets" / "fellowstitch.png").read_bytes()).decode()
 
-    style = (
-        sans.css() + bold.css() + mono.css()
-        + "text{white-space:pre}.cursor{animation:blink 1s steps(1) infinite}@keyframes blink{50%{opacity:0}}"
-    )
+    style = sans.css() + bold.css() + mono.css() + "text{white-space:pre}"
 
     for theme in THEMES:
         (ROOT / "assets" / f"post-{theme}.svg").write_text(render(theme, sans, bold, mono, picture, style), encoding="utf-8")
