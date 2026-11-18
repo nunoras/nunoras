@@ -19,7 +19,7 @@ NAV = "[Home] [Catalog] [Bottom]"
 NAME = "Nuno"
 STAMP = " 11/18/26(Wed)02:14:07 No.000417 [Reply]"
 FILE_NAME = "fellowstitch.png"
-FILE_INFO = " (41 KB, 300x300)"
+FILE_INFO = " (60 KB, 460x460)"
 GREENTEXT = [
     ">be me",
     ">live in Sintra, Portugal",
@@ -81,7 +81,7 @@ class Face:
 def subset_face(family, font, text):
     options = subset.Options()
     options.layout_features = []
-    options.name_IDs = []
+    options.name_IDs = ["*"]
     options.hinting = False
     subsetter = subset.Subsetter(options)
     subsetter.populate(text=text)
@@ -157,7 +157,6 @@ def render(theme, sans, bold, mono, picture):
     out.append(f'<rect class="cursor" x="{cursor_x:.1f}" y="{gy + 1}" width="7" height="2" fill="{c["strong"]}"/>')
 
     ry = top + THUMB + 10
-    lines = [REPLY_NAME + REPLY_NO, REPLY_QUOTE, REPLY_TEXT]
     box_w = max(bold.width(REPLY_NAME, 12.5) + sans.width(REPLY_NO, 12.5), sans.width(REPLY_TEXT, 12.5)) + 20
     box_h = 3 * 18 + 12
     out.append(f'<rect x="40.5" y="{ry + 0.5}" width="{box_w:.1f}" height="{box_h}" fill="{c["reply"]}" stroke="{c["line"]}"/>')
